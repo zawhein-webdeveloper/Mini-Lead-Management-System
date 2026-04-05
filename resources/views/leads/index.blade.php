@@ -95,6 +95,10 @@
             gap: 0.35rem;
             justify-content: flex-end;
             align-items: center;
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
         /* Compact navbar style for DataTables control rows */
         #leads-table_wrapper > .row:first-child,
         #leads-table_wrapper > .row:last-child {
@@ -137,10 +141,6 @@
             #leads-table_wrapper .dataTables_info,
             #leads-table_wrapper .dataTables_paginate { width: 100%; }
             #leads-table_wrapper .dataTables_paginate ul.pagination { justify-content: center !important; }
-        }
-            margin: 0;
-            padding-left: 0;
-            list-style: none;
         }
         #leads-table_wrapper .dataTables_paginate ul.pagination .page-item {
             display: inline-flex;
@@ -239,7 +239,6 @@
 <script>
 (function () {
     const exportBase = @json(url('leads-export'));
-    const _autoLoadAfterSuccess = @json(session('success') ? true : false);
 
     function syncExportLinks() {
         const status = document.getElementById('status_filter').value;
@@ -303,10 +302,6 @@
             }
         }
     });
-    // If the page was loaded after a successful action (e.g. login), ensure data loads
-    if (_autoLoadAfterSuccess && window.leadsDataTable) {
-        window.leadsDataTable.ajax.reload(null, false);
-    }
 })();
 </script>
 @endsection

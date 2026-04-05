@@ -22,7 +22,8 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: true);
+        // Full page load so leads index @section('scripts') runs (DataTables does not init on wire:navigate)
+        $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: false);
     }
 }; ?>
 
