@@ -5,7 +5,7 @@ use App\Providers\RouteServiceProvider;
 use Livewire\Volt\Volt;
 
 test('login screen can be rendered', function () {
-    $response = $this->get('/login');
+    $response = $this->get('/');
 
     $response
         ->assertOk()
@@ -49,7 +49,7 @@ test('navigation menu can be rendered', function () {
 
     $this->actingAs($user);
 
-    $response = $this->get('/dashboard');
+    $response = $this->get('/leads');
 
     $response
         ->assertOk()
